@@ -17,3 +17,7 @@ def funn(v):
     knn.fit(nca.transform(X_train), y_train)
 
     return 1 - knn.score(nca.transform(X_test), y_test)
+
+s = QDPSO(funn, NParticle, NDim, bounds, MaxIters, g)
+s.update(callback=log, interval=1)
+print("Found best position: {0}".format(s.gbest))
